@@ -1,232 +1,110 @@
-# Brain-Tumor-Classification-using-Federated-Learning-Diffusion-Models-and-LLaMa
-🧠 Brain Tumor Classification using Federated Learning, Diffusion Models, and LLaMa
-
-🚀 Project Overview
-
-Brain tumors are life-threatening conditions that require precise and early detection. This project leverages the power of Federated Learning (FL), Diffusion Models, and LLaMa (Language Model for Medical Analysis) to classify brain tumors into four categories:
-
-Glioma Tumor
-
-Meningioma Tumor
-
-Pituitary Tumor
-
-No Tumor
-
-By combining advanced AI techniques and federated architectures, we ensure privacy, scalability, and accuracy in tumor classification, allowing for decentralized medical data processing.
-
-🎯 Goals
-
-Classify brain tumors using MRI scans.
-
-Maintain data privacy with Federated Learning (FL) across multiple clients.
-
-Enhance model accuracy with Diffusion Models for image generation and augmentation.
-
-Use LLaMa for automated report generation and result analysis.
-
-Provide comprehensive visualizations and evaluation metrics for monitoring performance.
-
-🛠️ Technologies Used
-
-Python
-
-PyTorch
-
-Federated Learning Frameworks (Flower, PySyft)
-
-Stable Diffusion
-
-LLaMa (Meta's Language Model)
-
-Matplotlib, Seaborn (for visualizations)
-
-Scikit-Learn (for evaluation metrics)
-
-📂 Dataset Division
-
-Total MRI Images: 7022Divided into:
-
-Training Data: 80%
-
-Testing Data: 20%
-
-Distributed Across 5 Clients:
-
-Client A
-
-Client B
-
-Client C
-
-Client D
-
-Client E
-
-📊 Data Breakdown:
-
-Tumor Type
-
-Train Images
-
-Test Images
-
-Glioma
-
-2556
-
-640
-
-Meningioma
-
-2618
-
-657
-
-Pituitary
-
-2854
-
-714
-
-No Tumor
-
-2994
-
-746
-
-📈 Model Architecture
-
-Federated Learning manages decentralized training across clients.
-
-Diffusion Models generate synthetic MRI images to augment datasets.
-
-Convolutional Neural Networks (CNNs) classify tumors at each client node.
-
-LLaMa generates automated medical reports from model predictions.
-
-📊 Evaluation Metrics
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-Score
-
-Confusion Matrix
-
-Loss Curves
-
-ROC Curves
-
-📉 Visualization
-
-Loss and Accuracy Graphs
-
-Confusion Matrix Heatmaps
-
-ROC Curves for Each Tumor Type
-
-Client Contribution Logs
-
-📝 LLaMa Report Generation
-
-Reports Include:
-
-Tumor classification results
-
-Probability scores
-
-Recommendations for further diagnosis
-
-Summary of model confidence
-
-Generated During:
-
-Model testing phase
-
-Post-training evaluation
-
-Client-specific and global model evaluation
-
-📊 Client Workflow (Example)
-
-Client A:
-
-Receives initial model from central server.
-
-Trains on local MRI data.
-
-Generates augmented images using diffusion models.
-
-Sends model updates to central server.
-
-Client B, C, D, E follow similar processes.
-
-🚧 Project Structure
-
-📁 BrainTumor-FL-Project
-│
-├── 📂 data
-│   ├── client_A_train
-│   ├── client_A_test
-│   ├── client_B_train
-│   ├── client_B_test
-│   ├── ...
-│
-├── 📂 models
-│   ├── cnn_model.py
-│   ├── diffusion_model.py
-│   └── llama_report.py
-│
-├── 📂 federated
-│   ├── server.py
-│   ├── client.py
-│   └── aggregator.py
-│
-├── 📂 visualizations
-│   ├── confusion_matrix.py
-│   ├── roc_curve.py
-│   └── loss_accuracy.py
-│
-└── README.md
-
-🚀 How to Run
-
-Install dependencies:
-
+# 🧠 Brain Tumor Classification using Federated Learning, Diffusion Models, and LLaMa
+
+## 📌 Project Overview
+This project focuses on classifying brain tumors into four categories:
+- **Glioma**
+- **Meningioma**
+- **Pituitary Tumor**
+- **No Tumor**
+
+We leverage **Federated Learning (FL)** to distribute the training across five clients, ensuring data privacy. **Diffusion Models** are applied to enhance image quality and feature extraction, while **LLaMa (Language Model)** generates comprehensive reports based on model predictions and logs.
+
+## 🎯 Objectives
+- Build a distributed classification system using FL.
+- Enhance tumor classification accuracy with Diffusion Models.
+- Automate report generation with LLaMa.
+- Ensure client data privacy while collaboratively improving the model.
+
+## 📂 Dataset Structure
+The dataset is split into:
+- **Training Data:** 80% (5592 images)
+- **Testing Data:** 20% (1161 images)
+- **Client Distribution:**
+  - 5 Clients with individual train/test splits.
+  - Central test set for evaluation.
+
+### 🏷️ Categories
+- **Glioma** (1500 images)
+- **Meningioma** (1339 images)
+- **No Tumor** (1595 images)
+- **Pituitary Tumor** (1427 images)
+
+## 🧩 Model Workflow
+1. **Data Distribution:** Dataset split into 5 clients.
+2. **FL Rounds:** Models trained individually on client data.
+3. **Diffusion Models:** Enhance MRI images for better feature extraction.
+4. **Aggregation:** Central model aggregates weights from clients.
+5. **Evaluation:** Global model evaluated using the central test set.
+6. **Report Generation:** LLaMa generates detailed performance reports.
+
+## 🛠️ Technologies
+- **Python** 🐍
+- **TensorFlow/PyTorch** 🔥
+- **Hugging Face Diffusion Models** 🤗
+- **LLaMa** 🦙
+- **Federated Learning** 🧑‍🤝‍🧑
+
+## 📊 Evaluation Metrics
+- **Accuracy** 📈
+- **Precision & Recall** 📊
+- **F1-Score** ⚖️
+- **Confusion Matrix** 🔲
+
+### 📉 Visualization
+- Loss Curves
+- Accuracy Graphs (Client vs Central)
+- Model Aggregation Trends
+
+## 🚀 Installation & Setup
+```bash
+# Clone the repository
+git clone https://github.com/username/brain-tumor-fl.git
+cd brain-tumor-fl
+
+# Create environment
+python -m venv env
+source env/bin/activate  # For Windows use env\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
+```
 
-Prepare Dataset: Place MRI images in data/ according to client folders.
+## 🏃‍♂️ Running the Project
+```bash
+# Divide dataset for clients
+python data_split.py
 
-Run Federated Server:
+# Train FL models
+python train_federated.py
 
-python federated/server.py
+# Evaluate global model
+python evaluate.py
 
-Start Client Nodes:
+# Generate LLaMa reports
+python llama_report.py
+```
 
-python federated/client.py --client=A
-python federated/client.py --client=B
+## 📜 Results & Logs
+- **Client Logs:** Performance logs for each client.
+- **Global Model Logs:** Centralized evaluation metrics.
+- **LLaMa Reports:** Text-based performance summaries.
 
-Generate Reports:
+## 📈 Example Report (Generated by LLaMa)
+```
+📊 Brain Tumor Classification Report
+-----------------------------------
+Model Accuracy: 91.2%
+Precision: 89.5%
+Recall: 90.1%
+Tumor Classification Breakdown:
+- Glioma: 92%
+- Meningioma: 89%
+- Pituitary Tumor: 91%
+- No Tumor: 93%
+```
 
-python models/llama_report.py
-
-📬 Results
-
-Baseline Accuracy: ~30% (Initial Phase)
-
-Post-Federated Training Accuracy: ~85%+
-
-Improvement with Diffusion Models: +5-10% Accuracy
-
-📌 Future Scope
-
-Integration with medical imaging devices for real-time inference.
-
-Deployment on cloud-based platforms for large-scale hospital networks.
-
-Expansion to classify other brain-related diseases.
-
+## 📅 Project Timeline
+- **Phase 1:** Dataset Preparation & FL Setup
+- **Phase 2:** Diffusion Model Integration
+- **Phase 3:** Evaluation & Tuning
+- **Phase 4:** Report Automation with LLaMa

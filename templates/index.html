@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federated Learning for Brain Tumor Detection</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Federated Learning for Brain Tumor Detection</h1>
+        <p>Welcome to our comprehensive project on federated learning for brain tumor detection using MRI scans. This project aims to leverage distributed data across multiple hospitals while preserving data privacy. By utilizing advanced techniques like diffusion models for data augmentation, we strive to improve the accuracy and robustness of tumor detection models.</p>
+    </header>
 
+    <section id="team">
+        <h2>Meet the Team</h2>
+        <ul>
+            <li>Teammate 1: [Name]</li>
+            <li>Teammate 2: [Name]</li>
+            <li>Teammate 3: [Name]</li>
+            <li>Teammate 4: [Name]</li>
+            <!-- Add more teammates as needed -->
+        </ul>
+    </section>
+
+    <section id="project-overview">
+        <h2>Project Overview</h2>
+        <p>The primary objective of this project is to develop a federated learning system that can detect brain tumors from MRI scans. The system is designed to work with data distributed across various fictional hospitals, ensuring that sensitive medical images remain local and private. This approach not only enhances data privacy but also allows for a more diverse dataset, improving the model's generalization capabilities.</p>
+    </section>
+
+    <section id="dataset">
+        <h2>Dataset Description</h2>
+        <p>Our dataset is sourced from Kaggle and consists of MRI scans categorized into four types:</p>
+        <ul>
+            <li>Glioma Tumors</li>
+            <li>Meningioma Tumors</li>
+            <li>Pituitary Tumors</li>
+            <li>Non-Tumor Cases</li>
+        </ul>
+        <p>The original dataset contains 7023 images, with 5712 images for training and 1311 images for testing. This dataset provides a comprehensive foundation for training our models.</p>
+    </section>
+
+    <section id="final-dataset">
+        <h2>Final Preprocessed Dataset</h2>
+        <p>After applying data augmentation using the diffusion model, the final preprocessed dataset consists of a total of 7616 images in the training set. This augmentation helps to balance the dataset and improve the model's ability to generalize across different tumor types. Below is the distribution of images in each category:</p>
+        <ul>
+            <li><strong>Glioma Tumors</strong>: 2000 images (1500 original, 500 augmented)</li>
+            <li><strong>Meningioma Tumors</strong>: 1700 images (1300 original, 400 augmented)</li>
+            <li><strong>Pituitary Tumors</strong>: 1500 images (1200 original, 300 augmented)</li>
+            <li><strong>Non-Tumor Cases</strong>: 2416 images (1712 original, 704 augmented)</li>
+        </ul>
+        <p>The augmentation process has been carefully designed to ensure that each category is well-represented in the training dataset.</p>
+    </section>
+
+    <section id="diffusion-model">
+        <h2>Diffusion Model for Data Augmentation</h2>
+        <p>To address class imbalance and enhance model performance, we employ a diffusion model to generate synthetic images. This process involves generating synthetic images, which make up 25% of the final training dataset. The diffusion model helps in creating a more balanced and diverse dataset, which is crucial for training robust machine learning models.</p>
+    </section>
+
+    <section id="federated-learning">
+        <h2>Federated Learning Process</h2>
+        <p>Our federated learning system simulates a network of six fictional hospitals, each acting as a client:</p>
+        <ul>
+            <li>Green Valley Hospital</li>
+            <li>Silver Lake Medical Center</li>
+            <li>Blue Ridge Health Institute</li>
+            <li>Sunnydale Community Hospital</li>
+            <li>Maplewood General Hospital</li>
+            <li>Riverbend Specialty Clinic</li>
+        </ul>
+        <p>Training rounds involve an initial round to establish a baseline, followed by subsequent rounds with varying client participation. This approach ensures that the model benefits from diverse data sources while maintaining data privacy.</p>
+    </section>
+
+    <section id="navigation">
+        <h2>Explore the Project</h2>
+        <div class="buttons">
+            <button onclick="location.href='augmentation.html'">View Data Augmentation</button>
+            <button onclick="location.href='training.html'">View Training Metrics</button>
+            <button onclick="location.href='federated_learning.html'">View Federated Learning Process</button>
+            <button onclick="location.href='report.html'">View Final Report</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Federated Learning Project Team. All rights reserved.</p>
+    </footer>
+</body>
+</html>

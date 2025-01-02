@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Metrics for Federated Learning</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Training Metrics in Federated Learning</h1>
+        <p>Delve into the detailed training metrics and progress achieved through federated learning rounds.</p>
+    </header>
 
+    <section id="training-process">
+        <h2>Understanding the Training Process</h2>
+        <p>The federated learning framework involves collaborative training across multiple client nodes. Each client independently trains a local version of the model with its data, then shares the resulting updates rather than the data itself. This approach enhances data privacy and leverages the diverse datasets that exist across different nodes.</p>
+    </section>
+
+    <section id="aggregate-metrics">
+        <h2>Aggregated Metrics</h2>
+        <p>Throughout the federated learning process, evaluation metrics such as accuracy, precision, recall, and more are monitored and aggregated after each round. The following sections highlight these metrics across multiple rounds of training:</p>
+    </section>
+
+    <section id="round-wise-metrics">
+        <h2>Round-by-Round Metrics</h2>
+        <p>Our federated learning system tracks various performance indicators round by round. The metrics reported after each round reflect the improvements made by aggregating client updates into the global model. Here’s how the model evolved over the training rounds:</p>
+
+        <div class="metrics-details">
+            <h3>Round 1</h3>
+            <ul>
+                <li><strong>Global Accuracy:</strong> 82.0%</li>
+                <li><strong>Global Precision:</strong> 80.5%</li>
+                <li><strong>Global Recall:</strong> 81.4%</li>
+                <li><strong>Global F1 Score:</strong> 80.9%</li>
+                <li><strong>RMSE:</strong> 0.22</li>
+                <li><strong>Individual Client Performance:</strong></li>
+                <ul>
+                    <li>Client 1: Accuracy - 84.0%</li>
+                    <li>Client 2: Accuracy - 81.0%</li>
+                    <!-- Additional client metrics -->
+                </ul>
+            </ul>
+
+            <h3>Round 2</h3>
+            <ul>
+                <li><strong>Global Accuracy:</strong> 86.5%</li>
+                <li><strong>Global Precision:</strong> 85.3%</li>
+                <li><strong>Global Recall:</strong> 85.9%</li>
+                <li><strong>Global F1 Score:</strong> 85.6%</li>
+                <li><strong>RMSE:</strong> 0.20</li>
+                <li><strong>Individual Client Performance:</strong></li>
+                <ul>
+                    <li>Client 3: Accuracy - 87.2%</li>
+                    <li>Client 4: Accuracy - 83.3%</li>
+                    <!-- Additional client metrics -->
+                </ul>
+            </ul>
+
+            <!-- Additional rounds -->
+        </div>
+    </section>
+
+    <section id="visualizations">
+        <h2>Visualization of Metrics Over Rounds</h2>
+        <p>To provide a clearer picture of the training progress, the following visualizations display the evolution of critical metrics over the federated learning rounds:</p>
+        <div class="charts-gallery">
+            <img src="../static/accuracy_progress.png" alt="Global Accuracy Progress">
+            <img src="../static/precision_progress.png" alt="Global Precision Progress">
+            <img src="../static/recall_progress.png" alt="Global Recall Progress">
+            <img src="../static/f1_progress.png" alt="Global F1 Score Progress">
+            <!-- Add more visualizations as needed -->
+        </div>
+    </section>
+
+    <section id="confusion-matrices">
+        <h2>Round-Specific Confusion Matrices</h2>
+        <p>Confusion matrices for each round further describe the classification capabilities of the global model across categories. These matrices help in understanding the distribution of true vs. predicted labels.</p>
+        <div class="confusion-matrix-gallery">
+            <img src="../static/confusion_matrix_round1.png" alt="Confusion Matrix Round 1">
+            <img src="../static/confusion_matrix_round2.png" alt="Confusion Matrix Round 2">
+            <!-- More confusion matrices -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Federated Learning Project Team. All rights reserved.</p>
+    </footer>
+</body>
+</html>

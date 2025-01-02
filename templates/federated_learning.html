@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federated Learning Process</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Federated Learning for Brain Tumor Detection</h1>
+        <p>Discover how federated learning enables privacy-preserving model training across distributed datasets.</p>
+    </header>
 
+    <section id="introduction">
+        <h2>Introduction to Federated Learning</h2>
+        <p>Federated learning is a decentralized approach to machine learning where models are trained across multiple devices or servers holding local data samples, without exchanging them. This method is particularly beneficial in scenarios where data privacy is paramount, such as in medical imaging.</p>
+    </section>
+
+    <section id="client-simulation">
+        <h2>Client Simulation</h2>
+        <p>In our project, we simulate a network of six fictional hospitals, each acting as a client in the federated learning system. These clients collaborate to train a global model while keeping their data local:</p>
+        <ul>
+            <li>Green Valley Hospital</li>
+            <li>Silver Lake Medical Center</li>
+            <li>Blue Ridge Health Institute</li>
+            <li>Sunnydale Community Hospital</li>
+            <li>Maplewood General Hospital</li>
+            <li>Riverbend Specialty Clinic</li>
+        </ul>
+        <p>Each client trains the model on its local dataset and shares only the model updates with a central server, ensuring that sensitive medical data remains private.</p>
+    </section>
+
+    <section id="training-rounds">
+        <h2>Training Rounds</h2>
+        <p>The federated learning process is organized into multiple training rounds:</p>
+        <ul>
+            <li><strong>Initial Round:</strong> The global model is trained on 10% of the dataset to establish a baseline performance.</li>
+            <li><strong>Subsequent Rounds:</strong> Clients participate in training rounds, with the number of participating clients varying each round. This simulates real-world scenarios where clients may not always be available.</li>
+        </ul>
+        <p>After each round, the central server aggregates the model updates using the Federated Averaging (FedAvg) algorithm to update the global model.</p>
+    </section>
+
+    <section id="evaluation-metrics">
+        <h2>Evaluation Metrics</h2>
+        <p>To assess the performance of the federated learning model, we use several key metrics:</p>
+        <ul>
+            <li><strong>Accuracy:</strong> The ratio of correct predictions to total predictions.</li>
+            <li><strong>Precision:</strong> The ratio of true positives to the sum of true positives and false positives.</li>
+            <li><strong>Recall:</strong> The ratio of true positives to the sum of true positives and false negatives.</li>
+            <li><strong>F1 Score:</strong> The harmonic mean of precision and recall.</li>
+            <li><strong>Root Mean Squared Error (RMSE):</strong> A measure of the differences between predicted and actual values.</li>
+            <li><strong>Confusion Matrix:</strong> A table showing true vs. predicted classifications.</li>
+        </ul>
+        <p>These metrics are calculated after each round to evaluate both local and global model performance.</p>
+    </section>
+
+    <section id="benefits">
+        <h2>Benefits of Federated Learning</h2>
+        <p>Federated learning offers several advantages in the context of medical imaging:</p>
+        <ul>
+            <li><strong>Data Privacy:</strong> Sensitive medical data remains local, reducing the risk of data breaches.</li>
+            <li><strong>Scalability:</strong> The system can easily scale to include more clients without compromising data security.</li>
+            <li><strong>Diversity:</strong> The model benefits from diverse datasets across different clients, improving its generalization capabilities.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Federated Learning Project Team. All rights reserved.</p>
+    </footer>
+</body>
+</html>

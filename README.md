@@ -28,6 +28,30 @@ To address class imbalance and enhance model performance, we employ a diffusion 
 - **Generating Synthetic Images**: 25% of the final training dataset consists of these images.
 - **Final Training Dataset**: 7616 images after augmentation.
 
+## 📈 Final Preprocessed Dataset
+
+After applying data augmentation using the diffusion model, the final preprocessed dataset consists of a total of 7616 images in the training set. This augmentation helps to balance the dataset and improve the model's ability to generalize across different tumor types. Below is the distribution of images in each category:
+
+- **Glioma Tumors**:
+  - Original Images: 1500
+  - Augmented Images: 500
+  - **Total**: 2000
+
+- **Meningioma Tumors**:
+  - Original Images: 1300
+  - Augmented Images: 400
+  - **Total**: 1700
+
+- **Pituitary Tumors**:
+  - Original Images: 1200
+  - Augmented Images: 300
+  - **Total**: 1500
+
+- **Non-Tumor Cases**:
+  - Original Images: 1712
+  - Augmented Images: 704
+  - **Total**: 2416
+
 The diffusion model helps in creating a more balanced and diverse dataset, which is crucial for training robust machine learning models.
 
 ## 🏥 Federated Learning Process

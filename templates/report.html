@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Report</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="../static/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Final Report on Federated Learning for Brain Tumor Detection</h1>
+        <p>This report provides a comprehensive overview of the federated learning process, final metrics, and allows users to simulate the learning process with custom parameters.</p>
+    </header>
 
+    <section id="user-form">
+        <h2>Simulate Federated Learning</h2>
+        <p>Use the form below to simulate the federated learning process with custom parameters. This interactive tool allows you to explore how different configurations impact model performance.</p>
+        <form id="federated-learning-form" onsubmit="startSimulation(event)">
+            <div class="form-group">
+                <label for="client-allocation">Initial Individual Client Data Allocation Percentage:</label>
+                <input type="text" id="client-allocation" name="client-allocation" placeholder="e.g., Client A: 20%, Client B: 30%">
+            </div>
+            <div class="form-group">
+                <label for="categories">Categories Available:</label>
+                <select id="categories" name="categories" multiple>
+                    <option value="glioma">Glioma</option>
+                    <option value="meningioma">Meningioma</option>
+                    <option value="pituitary">Pituitary</option>
+                    <option value="notumor">Non-Tumor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="num-rounds">Number of Rounds:</label>
+                <input type="number" id="num-rounds" name="num-rounds" min="1" max="10" value="5">
+            </div>
+            <div class="form-group">
+                <label for="client-participation">Client Participation for Each Round:</label>
+                <textarea id="client-participation" name="client-participation" placeholder="Round 1: Client A, Client B; Round 2: Client C, Client D"></textarea>
+            </div>
+            <button type="submit">Start Simulation</button>
+        </form>
+    </section>
+
+    <section id="live-metrics">
+        <h2>Live Metrics Display</h2>
+        <p>As you simulate the federated learning process, the metrics below will update dynamically to reflect the impact of your chosen parameters:</p>
+        <div id="metrics-display">
+            <!-- Placeholder for live metrics visualization -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Federated Learning Project Team. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function startSimulation(event) {
+            event.preventDefault();
+            // Collect form data
+            const formData = new FormData(document.getElementById('federated-learning-form'));
+            // Send data to backend and start simulation
+            fetch('/simulate', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update the page with live metrics and graphs
+                updateMetricsDisplay(data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function updateMetricsDisplay(data) {
+            // Update the metrics display section with new data
+            const metricsDisplay = document.getElementById('metrics-display');
+            metricsDisplay.innerHTML = ''; // Clear previous content
+
+            // Example: Display metrics for each round
+            data.rounds.forEach((round, index) => {
+                const roundSection = document.createElement('div');
+                roundSection.innerHTML = `<h3>Round ${index + 1}</h3>
+                                          <p>Global Model Accuracy: ${round.global_accuracy}%</p>
+                                          <p>Client Metrics: ${JSON.stringify(round.client_metrics)}</p>`;
+                metricsDisplay.appendChild(roundSection);
+            });
+
+            // Example: Add graphs (this would be more complex in a real implementation)
+            const graph = document.createElement('img');
+            graph.src = '../static/graph_placeholder.png'; // Placeholder for actual graph
+            metricsDisplay.appendChild(graph);
+        }
+    </script>
+</body>
+</html>

@@ -1,110 +1,79 @@
-# 🧠 Brain Tumor Classification using Federated Learning, Diffusion Models, and LLaMa
+# 🧠 Federated Learning for Brain Tumor Detection
 
-## 📌 Project Overview
-This project focuses on classifying brain tumors into four categories:
-- **Glioma**
-- **Meningioma**
-- **Pituitary Tumor**
-- **No Tumor**
+Welcome to our project on federated learning for brain tumor detection using MRI scans. This project leverages distributed data across multiple hospitals while preserving data privacy. By utilizing advanced techniques like diffusion models for data augmentation, we aim to improve the accuracy and robustness of tumor detection models.
 
-We leverage **Federated Learning (FL)** to distribute the training across five clients, ensuring data privacy. **Diffusion Models** are applied to enhance image quality and feature extraction, while **LLaMa (Language Model)** generates comprehensive reports based on model predictions and logs.
+## 📚 Project Overview
 
-## 🎯 Objectives
-- Build a distributed classification system using FL.
-- Enhance tumor classification accuracy with Diffusion Models.
-- Automate report generation with LLaMa.
-- Ensure client data privacy while collaboratively improving the model.
+The primary objective of this project is to develop a federated learning system that can detect brain tumors from MRI scans. The system is designed to work with data distributed across various fictional hospitals, ensuring that sensitive medical images remain local and private.
 
-## 📂 Dataset Structure
-The dataset is split into:
-- **Training Data:** 80% (5592 images)
-- **Testing Data:** 20% (1161 images)
-- **Client Distribution:**
-  - 5 Clients with individual train/test splits.
-  - Central test set for evaluation.
+## 📊 Dataset Description
 
-### 🏷️ Categories
-- **Glioma** (1500 images)
-- **Meningioma** (1339 images)
-- **No Tumor** (1595 images)
-- **Pituitary Tumor** (1427 images)
+Our dataset is sourced from Kaggle and consists of MRI scans categorized into four types:
+- **Glioma Tumors**
+- **Meningioma Tumors**
+- **Pituitary Tumors**
+- **Non-Tumor Cases**
 
-## 🧩 Model Workflow
-1. **Data Distribution:** Dataset split into 5 clients.
-2. **FL Rounds:** Models trained individually on client data.
-3. **Diffusion Models:** Enhance MRI images for better feature extraction.
-4. **Aggregation:** Central model aggregates weights from clients.
-5. **Evaluation:** Global model evaluated using the central test set.
-6. **Report Generation:** LLaMa generates detailed performance reports.
+### Original Dataset Structure
 
-## 🛠️ Technologies
-- **Python** 🐍
-- **TensorFlow/PyTorch** 🔥
-- **Hugging Face Diffusion Models** 🤗
-- **LLaMa** 🦙
-- **Federated Learning** 🧑‍🤝‍🧑
+- **Total Images**: 7023
+- **Training Set**: 5712 images
+- **Testing Set**: 1311 images
 
-## 📊 Evaluation Metrics
-- **Accuracy** 📈
-- **Precision & Recall** 📊
-- **F1-Score** ⚖️
-- **Confusion Matrix** 🔲
+The dataset is organized into training and testing directories, each containing subdirectories for the four categories.
 
-### 📉 Visualization
-- Loss Curves
-- Accuracy Graphs (Client vs Central)
-- Model Aggregation Trends
+## 🌟 Diffusion Model for Data Augmentation
 
-## 🚀 Installation & Setup
-```bash
-# Clone the repository
-git clone https://github.com/username/brain-tumor-fl.git
-cd brain-tumor-fl
+To address class imbalance and enhance model performance, we employ a diffusion model to generate synthetic images. This process involves:
+- **Generating Synthetic Images**: 25% of the final training dataset consists of these images.
+- **Final Training Dataset**: 7616 images after augmentation.
 
-# Create environment
-python -m venv env
-source env/bin/activate  # For Windows use env\Scripts\activate
+The diffusion model helps in creating a more balanced and diverse dataset, which is crucial for training robust machine learning models.
 
-# Install dependencies
-pip install -r requirements.txt
-```
+## 🏥 Federated Learning Process
 
-## 🏃‍♂️ Running the Project
-```bash
-# Divide dataset for clients
-python data_split.py
+Our federated learning system simulates a network of six fictional hospitals, each acting as a client:
+1. **Green Valley Hospital**
+2. **Silver Lake Medical Center**
+3. **Blue Ridge Health Institute**
+4. **Sunnydale Community Hospital**
+5. **Maplewood General Hospital**
+6. **Riverbend Specialty Clinic**
 
-# Train FL models
-python train_federated.py
+### Training Rounds
 
-# Evaluate global model
-python evaluate.py
+- **Initial Round**: The global model is trained on 10% of the dataset to establish a baseline.
+- **Subsequent Rounds**: Clients participate in training rounds, with the number of participating clients varying each round.
 
-# Generate LLaMa reports
-python llama_report.py
-```
+### Evaluation Metrics
 
-## 📜 Results & Logs
-- **Client Logs:** Performance logs for each client.
-- **Global Model Logs:** Centralized evaluation metrics.
-- **LLaMa Reports:** Text-based performance summaries.
+We use several metrics to evaluate model performance:
+- **Accuracy**
+- **Precision**
+- **Recall**
+- **F1 Score**
+- **Root Mean Squared Error (RMSE)**
+- **Confusion Matrix**
 
-## 📈 Example Report (Generated by LLaMa)
-```
-📊 Brain Tumor Classification Report
------------------------------------
-Model Accuracy: 91.2%
-Precision: 89.5%
-Recall: 90.1%
-Tumor Classification Breakdown:
-- Glioma: 92%
-- Meningioma: 89%
-- Pituitary Tumor: 91%
-- No Tumor: 93%
-```
+These metrics are calculated after each round to assess both local and global model performance.
 
-## 📅 Project Timeline
-- **Phase 1:** Dataset Preparation & FL Setup
-- **Phase 2:** Diffusion Model Integration
-- **Phase 3:** Evaluation & Tuning
-- **Phase 4:** Report Automation with LLaMa
+## 🖥️ Web Application
+
+The project includes a Streamlit web application that allows users to interact with the federated learning process. Users can:
+- View the original and augmented datasets.
+- Monitor training metrics and progress.
+- Explore the federated learning process and final report.
+- Hosted at Streamlit by 
+
+## 🚀 Getting Started
+
+To run the project, follow these steps:
+1. Clone the repository from GitHub.
+2. Install the required dependencies using `requirements.txt`.
+3. Deploy the Streamlit app to explore the project.
+
+## 🤝 Meet the Team
+
+- **Teammate 1**: [Swara Sameer Pawanekar]
+- **Teammate 2**: [Neelam Bind]
+- **Teammate 3**: [Sahana B R]

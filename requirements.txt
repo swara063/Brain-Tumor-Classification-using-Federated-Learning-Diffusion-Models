@@ -11,4 +11,4 @@ syft==0.7.0  # Downgrade to ensure compatibility with torch
 torch==2.0.0  # Use a compatible version of torch
 seaborn==0.13.0
 huggingface-hub==0.17.0  # Downgrade to ensure compatibility with tokenizers
-tokenizers==0.14.0  # Ensure compatibility with other packages
+

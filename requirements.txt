@@ -10,5 +10,5 @@ ftfy==6.1.1
 syft==0.7.0 
 seaborn==0.13.0
 huggingface-hub==0.17.0  # Downgrade to ensure compatibility with tokenizers
-torch==1.11.0  
+torch==1.12.0  
 

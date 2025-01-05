@@ -10,6 +10,5 @@ accelerate==0.23.0
 ftfy==6.1.1
 syft==0.8.2
 seaborn==0.13.0
-huggingface-hub==0.17.0  # Compatible with tokenizers
+huggingface-hub==0.16.4  # Compatible with tokenizers
 tokenizers==0.14.0  # Compatible with transformers
-

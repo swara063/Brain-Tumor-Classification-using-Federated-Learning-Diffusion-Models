@@ -1,4 +1,11 @@
-# Add this temporary block to run download_data.py
+import os
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from federated_learning import FederatedLearning
+from diffusion_model import generate_synthetic_images
+
 def download_dataset_from_script():
     import zipfile
     from kaggle.api.kaggle_api_extended import KaggleApi
@@ -35,15 +42,7 @@ def download_dataset_from_script():
 
 if __name__ == "__main__":
     download_dataset_from_script()
-
-import streamlit as st
-import os
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from federated_learning import FederatedLearning
-from diffusion_model import generate_synthetic_images
-
+    
 # Initialize the Federated Learning system
 fl_system = FederatedLearning()
 

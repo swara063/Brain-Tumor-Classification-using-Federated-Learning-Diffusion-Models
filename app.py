@@ -68,7 +68,7 @@ elif page == "Data Augmentation":
     st.title("Data Augmentation")
     st.write("""
         Data augmentation is a crucial step in preparing our dataset for training robust machine learning models.
-        By artificially expanding the dataset, we can improve the model's ability to generalize and reduce overfitting.""")
+        By artificially expanding the dataset, we can improve the ability of the model to generalize and reduce overfitting.""")
     generate_synthetic_images()
     st.write("Synthetic images have been generated and added to the training dataset.")
 

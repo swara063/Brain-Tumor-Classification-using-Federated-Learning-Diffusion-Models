@@ -37,6 +37,7 @@ if __name__ == "__main__":
     download_dataset_from_script()
 
 import streamlit as st
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt

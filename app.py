@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from federated_learning import FederatedLearning
-from diffusion_model import create_final_dataset
+from download_data import download_dataset  # Import the download function
 
 def download_dataset_from_script():
     import zipfile
@@ -19,7 +19,7 @@ def download_dataset_from_script():
         api.authenticate()
 
         # Define the Kaggle dataset path and destination file
-        dataset_path = 'your-kaggle-username/dataset-name'  # Replace with actual "username/dataset-name"
+        dataset_path = 'masoudnickparvar/brain-tumor-mri-dataset'  # Replace with actual "username/dataset-name"
         download_path = 'data/original_dataset.zip'
 
         # Create a 'data' directory if it doesn't exist
@@ -70,9 +70,12 @@ elif page == "Data Augmentation":
     st.title("Data Augmentation")
     st.write("""
         Data augmentation is a crucial step in preparing our dataset for training robust machine learning models.
-        By artificially expanding the dataset, we can improve the ability of the model to generalize and reduce overfitting.""")
-    generate_synthetic_images()
-    st.write("Synthetic images have been generated and added to the training dataset.")
+        By artificially expanding the dataset, we can improve the ability of the model to generalize and reduce overfitting.
+    """)
+    
+    # Call the function to download the dataset
+    download_dataset()  # This line downloads the dataset
+    st.write("Dataset has been downloaded and extracted.")
 
 # Training Metrics Page
 elif page == "Training Metrics":
@@ -141,6 +144,10 @@ elif page == "Final Report":
         ax.set_xlabel("Clients")
         ax.set_ylabel("Metrics")
         ax.legend()
+        st.pyplot(fig)
+
+# Footer
+st.sidebar.info("© 2023 Federated Learning Project Team. All rights reserved.")
         st.pyplot(fig)
 
 # Footer

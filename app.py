@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from federated_learning import FederatedLearning
-from diffusion_model import generate_synthetic_images
+from diffusion_model import create_final_dataset
 
 def download_dataset_from_script():
     import zipfile

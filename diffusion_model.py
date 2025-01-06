@@ -7,11 +7,13 @@ categories = ['glioma', 'meningioma', 'notumor', 'pituitary']
 final_train_dir = 'data/final_train_data'
 final_test_dir = 'data/final_test_data'
 augmented_train_dir = 'data/augmented_train_data'
+final_dataset_dir = 'data/final_dataset'  # New final dataset directory
 
 # Create directories for resized and augmented images
 os.makedirs(final_train_dir, exist_ok=True)
 os.makedirs(final_test_dir, exist_ok=True)
 os.makedirs(augmented_train_dir, exist_ok=True)
+os.makedirs(final_dataset_dir, exist_ok=True)  # Create final dataset directory
 
 def resize_images(source_dir, target_dir):
     total_resized = 0
@@ -84,11 +86,29 @@ def augment_images(source_dir, target_dir, augmentation_ratio=0.25):
 
     print(f"Augmentation completed: {total_augmented} images augmented successfully, {total_errors} errors encountered.")
 
-# Example usage
-if __name__ == "__main__":
+# New function to create final dataset
+def create_final_dataset():
     # Resize images
     resize_images('data/original_dataset/Training', final_train_dir)
     resize_images('data/original_dataset/Testing', final_test_dir)
 
     # Augment training images
     augment_images(final_train_dir, augmented_train_dir)
+
+    # Move augmented images to the final dataset
+    for category in categories:
+        augmented_category_path = os.path.join(augmented_train_dir, category)
+        final_category_path = os.path.join(final_dataset_dir, category)
+        os.makedirs(final_category_path, exist_ok=True)
+
+        # Move augmented images to the final dataset
+        for img_name in os.listdir(augmented_category_path):
+            img_path = os.path.join(augmented_category_path, img_name)
+            try:
+                img = Image.open(img_path)
+                img.save(os.path.join(final_category_path, img_name))
+            except Exception as e:
+                print(f"Error saving augmented image {img_name}: {e}")
+
+if __name__ == "__main__":
+    create_final_dataset()

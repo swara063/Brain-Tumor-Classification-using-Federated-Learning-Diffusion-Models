@@ -34,7 +34,9 @@ def download_dataset_from_script():
     download_dataset()
 
 if __name__ == "__main__":
-    download_dataset_from_script()"""import streamlit as st
+    download_dataset_from_script()
+
+import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -142,4 +144,4 @@ elif page == "Final Report":
         st.pyplot(fig)
 
 # Footer
-st.sidebar.info("© 2023 Federated Learning Project Team. All rights reserved.")"""
+st.sidebar.info("© 2023 Federated Learning Project Team. All rights reserved.")

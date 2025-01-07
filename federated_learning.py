@@ -1,4 +1,5 @@
 import numpy as np
+from tensorflow.keras.preprocessing import image_dataset_from_directory
 
 class FederatedLearning:
     def __init__(self):
@@ -17,10 +18,12 @@ class FederatedLearning:
         Load the final dataset for federated learning.
         This function should load images from the final_dataset_dir.
         """
-        # Implement logic to load images from final_dataset_dir
-        print(f"Loading data from {final_dataset_dir}")
-        # Example: Load images and prepare them for training
-        # This is a placeholder; you would need to implement actual loading logic
+        train_ds = image_dataset_from_directory(
+            final_dataset_dir,
+            image_size=(224, 224),
+            batch_size=32
+        )
+        return train_ds
 
     def simulate(self, client_allocations, categories, num_rounds, client_participation_list):
         """

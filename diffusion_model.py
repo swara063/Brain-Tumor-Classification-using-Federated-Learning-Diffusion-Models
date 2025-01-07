@@ -15,6 +15,18 @@ os.makedirs(final_test_dir, exist_ok=True)
 os.makedirs(augmented_train_dir, exist_ok=True)
 os.makedirs(final_dataset_dir, exist_ok=True)  # Create final dataset directory
 
+# Ensure source directories exist
+training_source_dir = 'data/brain_tumor_dataset/Training'
+testing_source_dir = 'data/brain_tumor_dataset/Testing'
+
+if not os.path.exists(training_source_dir):
+    os.makedirs(training_source_dir)
+    print(f"Training dataset directory created at {training_source_dir}. Please add data.")
+
+if not os.path.exists(testing_source_dir):
+    os.makedirs(testing_source_dir)
+    print(f"Testing dataset directory created at {testing_source_dir}. Please add data.")
+
 def resize_images(source_dir, target_dir):
     total_resized = 0
     total_errors = 0
@@ -23,6 +35,10 @@ def resize_images(source_dir, target_dir):
         category_path = os.path.join(source_dir, category)
         save_path = os.path.join(target_dir, category)
         os.makedirs(save_path, exist_ok=True)
+
+        if not os.path.exists(category_path):
+            print(f"Warning: Source category directory {category_path} not found.")
+            continue
 
         files = os.listdir(category_path)
         for img_name in files:
@@ -61,6 +77,10 @@ def augment_images(source_dir, target_dir, augmentation_ratio=0.25):
         save_path = os.path.join(target_dir, category)
         os.makedirs(save_path, exist_ok=True)
 
+        if not os.path.exists(category_path):
+            print(f"Warning: Source category directory {category_path} not found.")
+            continue
+
         files = os.listdir(category_path)
         num_augments = int(augmentation_ratio * len(files))
 
@@ -88,20 +108,16 @@ def augment_images(source_dir, target_dir, augmentation_ratio=0.25):
 
 # New function to create final dataset
 def create_final_dataset():
-    # Resize images
-    resize_images('data/brain_tumor_dataset/Training', final_train_dir)
-    resize_images('data/brain_tumor_dataset/Testing', final_test_dir)
+    resize_images(training_source_dir, final_train_dir)
+    resize_images(testing_source_dir, final_test_dir)
 
-    # Augment training images
     augment_images(final_train_dir, augmented_train_dir)
 
-    # Move augmented images to the final dataset
     for category in categories:
         augmented_category_path = os.path.join(augmented_train_dir, category)
         final_category_path = os.path.join(final_dataset_dir, category)
         os.makedirs(final_category_path, exist_ok=True)
 
-        # Move augmented images to the final dataset
         for img_name in os.listdir(augmented_category_path):
             img_path = os.path.join(augmented_category_path, img_name)
             try:
@@ -110,8 +126,9 @@ def create_final_dataset():
             except Exception as e:
                 print(f"Error saving augmented image {img_name}: {e}")
 
-    # Ensure the final dataset has approximately 7616 images
     total_images = sum(len(os.listdir(os.path.join(final_dataset_dir, category))) for category in categories)
+    if total_images < 7616:
+        raise ValueError("Final dataset size is insufficient. Consider increasing augmentation.")
     print(f"Final dataset created with a total of {total_images} images.")
 
 if __name__ == "__main__":

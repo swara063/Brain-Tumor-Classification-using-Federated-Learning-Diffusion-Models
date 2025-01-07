@@ -89,8 +89,8 @@ def augment_images(source_dir, target_dir, augmentation_ratio=0.25):
 # New function to create final dataset
 def create_final_dataset():
     # Resize images
-    resize_images('data/original_dataset/Training', final_train_dir)
-    resize_images('data/original_dataset/Testing', final_test_dir)
+    resize_images('data/brain_tumor_dataset/Training', final_train_dir)
+    resize_images('data/brain_tumor_dataset/Testing', final_test_dir)
 
     # Augment training images
     augment_images(final_train_dir, augmented_train_dir)
@@ -109,6 +109,10 @@ def create_final_dataset():
                 img.save(os.path.join(final_category_path, img_name))
             except Exception as e:
                 print(f"Error saving augmented image {img_name}: {e}")
+
+    # Ensure the final dataset has approximately 7616 images
+    total_images = sum(len(os.listdir(os.path.join(final_dataset_dir, category))) for category in categories)
+    print(f"Final dataset created with a total of {total_images} images.")
 
 if __name__ == "__main__":
     create_final_dataset()

@@ -21,6 +21,11 @@ def download_dataset():
     print("Downloading dataset...")
     api.dataset_download_files(dataset_path, path='data', unzip=False)
 
+    # Check if the download was successful
+    if not os.path.exists(download_path):
+        print(f"Error: The file {download_path} does not exist. Download may have failed.")
+        return
+
     # Unzip the dataset
     print("Extracting dataset...")
     with zipfile.ZipFile(download_path, 'r') as zip_ref:

@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from federated_learning import FederatedLearning
 from download_data import download_dataset  # Import the download function
+from diffusion_model import create_final_dataset  # Import the function to create the final dataset
 
 def download_dataset_from_script():
     import zipfile
@@ -76,6 +77,10 @@ elif page == "Data Augmentation":
     # Call the function to download the dataset
     download_dataset()  # This line downloads the dataset
     st.write("Dataset has been downloaded and extracted.")
+    
+    # Create the final dataset (after download)
+    create_final_dataset()  # This function will resize and augment images
+    st.write("Final dataset has been created with augmented images.")
 
 # Training Metrics Page
 elif page == "Training Metrics":
@@ -144,10 +149,6 @@ elif page == "Final Report":
         ax.set_xlabel("Clients")
         ax.set_ylabel("Metrics")
         ax.legend()
-        st.pyplot(fig)
-
-# Footer
-st.sidebar.info("© 2023 Federated Learning Project Team. All rights reserved.")
         st.pyplot(fig)
 
 # Footer

@@ -7,46 +7,6 @@ from federated_learning import FederatedLearning
 from download_data import download_dataset  # Import the download function
 from diffusion_model import create_final_dataset  # Import the function to create the final dataset
 
-def download_dataset_from_script():
-    import zipfile
-    from kaggle.api.kaggle_api_extended import KaggleApi
-
-    def download_dataset():
-        """
-        Download dataset from Kaggle and unzip it into the data directory.
-        """
-        # Initialize Kaggle API
-        api = KaggleApi()
-        api.authenticate()
-
-        # Define the Kaggle dataset path and destination file
-        dataset_path = 'masoudnickparvar/brain-tumor-mri-dataset'  # Replace with actual "username/dataset-name"
-        download_path = 'data/original_dataset.zip'
-
-        # Create a 'data' directory if it doesn't exist
-        os.makedirs('data', exist_ok=True)
-
-        # Download the dataset
-        print("Downloading dataset...")
-        api.dataset_download_files(dataset_path, path='data', unzip=False)
-
-        # Unzip the dataset
-        print("Extracting dataset...")
-        with zipfile.ZipFile(download_path, 'r') as zip_ref:
-            zip_ref.extractall('data/original_dataset')
-        print("Download and extraction complete.")
-
-        # Clean up the downloaded zip file
-        os.remove(download_path)
-
-    download_dataset()
-
-if __name__ == "__main__":
-    download_dataset_from_script()
-    
-# Initialize the Federated Learning system
-fl_system = FederatedLearning()
-
 # Streamlit app configuration
 st.set_page_config(page_title="Federated Learning for Brain Tumor Detection", layout="wide")
 
@@ -103,6 +63,10 @@ elif page == "Federated Learning Process":
         or servers holding local data samples, without exchanging them. This method is particularly beneficial in scenarios
         where data privacy is paramount, such as in medical imaging.
     """)
+    
+    # Load the final dataset for federated learning
+    fl_system = FederatedLearning()
+    fl_system.load_data('data/final_dataset')  # Load the final dataset
 
 # Final Report Page
 elif page == "Final Report":

@@ -1,4 +1,3 @@
-import random
 import numpy as np
 
 class FederatedLearning:
@@ -12,6 +11,16 @@ class FederatedLearning:
         This is a placeholder function. Replace with actual model initialization logic.
         """
         return {"weights": np.random.rand(10)}  # Example model weights
+
+    def load_data(self, final_dataset_dir):
+        """
+        Load the final dataset for federated learning.
+        This function should load images from the final_dataset_dir.
+        """
+        # Implement logic to load images from final_dataset_dir
+        print(f"Loading data from {final_dataset_dir}")
+        # Example: Load images and prepare them for training
+        # This is a placeholder; you would need to implement actual loading logic
 
     def simulate(self, client_allocations, categories, num_rounds, client_participation_list):
         """
@@ -41,7 +50,7 @@ class FederatedLearning:
 
         # Final metrics visualization
         for client in self.clients:
-            results["final_metrics"][client] = [random.uniform(70, 100) for _ in range(6)]  # Example metrics
+            results["final_metrics"][client] = [np.random.uniform(70, 100) for _ in range(6)]  # Example metrics
 
         return results
 
@@ -50,7 +59,7 @@ class FederatedLearning:
         Train the global model on a fraction of the dataset.
         """
         # Placeholder logic for training
-        accuracy = random.uniform(50, 70)
+        accuracy = np.random.uniform(50, 70)
         return {"global_accuracy": accuracy}
 
     def train_client_model(self, client, data_allocation):
@@ -58,7 +67,7 @@ class FederatedLearning:
         Train a client's local model.
         """
         # Placeholder logic for client training
-        accuracy = random.uniform(60, 80)
+        accuracy = np.random.uniform(60, 80)
         return accuracy
 
     def aggregate_client_updates(self, client_metrics):
@@ -73,15 +82,9 @@ class FederatedLearning:
         Evaluate the global model.
         """
         # Placeholder logic for evaluation
-        accuracy = random.uniform(70, 90)
+        accuracy = np.random.uniform(70, 90)
         return {"accuracy": accuracy}
 
-# Example usage
 if __name__ == "__main__":
     fl = FederatedLearning()
-    client_allocations = {"Client A": 20, "Client B": 30, "Client C": 25, "Client D": 25}
-    categories = ["glioma", "meningioma"]
-    num_rounds = 5
-    client_participation_list = ["Client A, Client B", "Client C, Client D", "Client A, Client C", "Client B, Client D", "Client A, Client D"]
-    results = fl.simulate(client_allocations, categories, num_rounds, client_participation_list)
-    print(results)
+    fl.load_data('data/final_dataset')  # Load the final dataset
